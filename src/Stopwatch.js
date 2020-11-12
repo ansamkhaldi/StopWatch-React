@@ -19,16 +19,22 @@ class Stopwatch extends Component{
           });
         }, 10);
       };
+
       stopTimer = () => {
         this.setState({ timerOn: false });
         clearInterval(this.timer);
       };
+
+      
       resetTimer = () => {
         this.setState({
+          timerOn: false,
           timerStart: 0,
-          timerTime: 0
+          timerTime: 0,
         });
+        clearInterval(this.timer);
       };
+    
 
     render(){
         const { timerTime } = this.state;
@@ -51,7 +57,8 @@ class Stopwatch extends Component{
           (
               <button onClick={this.stopTimer}>Stop</button>
           )}
-         <button className="buttonReset"onClick={this.resetTimer}>Reset</button>
+              <button onClick={this.resetTimer}>Reset</button>
+          
 
           </div>
         </>
